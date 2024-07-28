@@ -5,10 +5,10 @@ on:
   pull_request:
     branches: [main, master]
 
-env:
-  # Setting an environment variable with the value of a configuration variable
-  ROOT_URL: ${{ vars.ROOT_URL }}
-  API_AUTH: ${{ vars.API_AUTH }}
+# env:
+#   # Setting an environment variable with the value of a configuration variable
+#   ROOT_URL: ${{ vars.ROOT_URL }}
+#   API_AUTH: ${{ vars.API_AUTH }}
 
 jobs:
   test:
@@ -24,4 +24,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
+        env:
+          # Setting an environment variable with the value of a configuration variable
+          ROOT_URL: ${{ secrets.ROOT_URL }}
+          API_AUTH: ${{ secrets.API_AUTH }}
         run: npx playwright test
