@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+env:
+  # Setting an environment variable with the value of a configuration variable
+  ROOT_URL: ${{ vars.ROOT_URL }}
+  API_AUTH: ${{ vars.API_AUTH }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -25,4 +30,4 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test --project=firefox --project=chromium --project=webkit --project="Mobile Chrome" --project="Microsoft Edge" --project="Mobile Safari" --project="Google Chrome"
+        run: npx playwright test
