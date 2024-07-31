@@ -14,11 +14,13 @@ test("test", async ({ page, context }) => {
 
   if (!posts[0]) return;
 
-  const loop = getRandomNumber(10);
+  // let loop = getRandomNumber(10);
+  let loop = posts.length;
 
-  for (let i = 0; i <= loop; i++) {
-    let ind = getRandomNumber(posts.length) - 1;
-    await page.goto(`${rootURL}/${posts[ind]?.slug}`);
+  for (let i = 0; i < loop; i++) {
+    // let ind = getRandomNumber(posts.length) - 1;
+
+    await page.goto(`${rootURL}/${posts[i]?.slug}`);
     await page.waitForTimeout(2000);
     await page.evaluate(() => {
       window.scrollTo({
