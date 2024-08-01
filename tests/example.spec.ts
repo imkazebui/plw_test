@@ -24,7 +24,21 @@ test("test", async ({ page, context }) => {
     await page.waitForTimeout(2000);
     await page.evaluate(() => {
       window.scrollTo({
+        top: document.body.scrollHeight / 2 + 200,
+        behavior: "smooth",
+      });
+    });
+    await page.waitForTimeout(2000);
+    await page.evaluate(() => {
+      window.scrollTo({
         top: document.body.scrollHeight / 2,
+        behavior: "smooth",
+      });
+    });
+    await page.waitForTimeout(2000);
+    await page.evaluate(() => {
+      window.scrollTo({
+        top: document.body.scrollHeight - 1000,
         behavior: "smooth",
       });
     });
@@ -36,11 +50,11 @@ test("test", async ({ page, context }) => {
       });
     });
 
-    const clEL = page.locator(
-      "#blog-comment-scroll-anchor > div:nth-child(1) > div:nth-child(1)"
-    );
+    // const clEL = page.locator(
+    //   "#blog-comment-scroll-anchor > div:nth-child(1) > div:nth-child(1)"
+    // );
 
-    clEL.click();
+    // clEL.click();
 
     await page.waitForTimeout(3000);
     await page.evaluate(() => {
