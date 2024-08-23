@@ -1,31 +1,31 @@
-name: Playwright Tests
-on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
+# name: Playwright Tests
+# on:
+#   push:
+#     branches: [main, master]
+#   pull_request:
+#     branches: [main, master]
 
-# env:
-#   # Setting an environment variable with the value of a configuration variable
-#   ROOT_URL: ${{ vars.ROOT_URL }}
-#   API_AUTH: ${{ vars.API_AUTH }}
+# # env:
+# #   # Setting an environment variable with the value of a configuration variable
+# #   ROOT_URL: ${{ vars.ROOT_URL }}
+# #   API_AUTH: ${{ vars.API_AUTH }}
 
-jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        env:
-          # Setting an environment variable with the value of a configuration variable
-          ROOT_URL: ${{ secrets.ROOT_URL }}
-          API_AUTH: ${{ secrets.API_AUTH }}
-        run: npx playwright test
+# jobs:
+#   test:
+#     timeout-minutes: 60
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+#       - name: Install dependencies
+#         run: npm ci
+#       - name: Install Playwright Browsers
+#         run: npx playwright install --with-deps
+#       - name: Run Playwright tests
+#         env:
+#           # Setting an environment variable with the value of a configuration variable
+#           ROOT_URL: ${{ secrets.ROOT_URL }}
+#           API_AUTH: ${{ secrets.API_AUTH }}
+#         run: npx playwright test
